@@ -3,29 +3,29 @@
     <head>
         <title>sustainability</title>
         <link href="style.css" rel="stylesheet"></link>
+        <script type="application/javascript" src="main.js"></script>
     </head>
     <body>
         <div class="sidebar" id="sidebar">
             <div style="font-size:22px;padding-left: 10px;">Button</div>
             
+            <div class="option" id="option1" onclick="toggleVisibility('provider-options')" style="cursor:pointer">Providers</div>        
+            <div id="provider-options" style="display:none;">
+                <a href="google.html">
+                    <div class="option indented">Google</div>
+                </a>
+
+                <a href="amazon.html">
+                    <div class="option indented">AWS</div>
+                </a>
+
+                <a href="azure.html">
+                    <div class="option indented">Azure</div>
+                </a>
+            </div>
+
             <a href="index.html">
-               <div class="option" id="option1">Providers</div>          
-            </a>
-
-            <a href="google.html">
-                <div class="option indented">Google</div>
-            </a>
-
-            <a href="amazon.html">
-                <div class="option indented">AWS</div>
-            </a>
-
-            <a href="azure.html">
-                <div class="option indented">Azure</div>
-            </a>
-
-            <a href="index.html">
-                <div class="option" id="option2">Compare</div>
+                <div class="option" id="compare">Compare</div>
             </a>
 
         </div>

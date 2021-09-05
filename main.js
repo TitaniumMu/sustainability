@@ -2,10 +2,14 @@ function gid(id) {
     return document.getElementById(id);
 }
 
-function toggleProviders() {
-    if(gid('provider-options').style.display == 'block'){
-        gid('provider-options').style.display = 'none';
+function toggleVisibility(id) {
+    if(gid(id).style.display == 'block'){
+        gid(id).style.display = 'none';
     }else{
-        gid('provider-options').style.display = 'block';
+        gid(id).style.display = 'block';
     }
+}
+
+function showBlurb() {
+    console.log("Blurb shown")
 }
