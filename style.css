@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family:sans-serif;
   }
 
 .sidebar {
@@ -10,14 +11,57 @@ body {
 }
 
 .content {
+    padding-left:10%;
+    padding-right:10%;
     left:210px;
     position: absolute;
+    width: calc(100% - 20% - 250px);
 }
 
-.option {
+.title {
+    margin-top:10px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.sidebar .option {
     font-size:22px;
     padding-top: 5px;
     padding-bottom:5px;
     padding-left:10px;
-    color:antiquewhite;
+    color:white;
+}
+
+.sidebar .option.indented{
+    padding-left: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border-color: black;
+    font-size:18px;
+    width:100%;
+}
+
+table tr:first-child{
+    font-weight: bold;
+}
+
+table td{
+    padding:5px;
+    width:33.33%;
+}
+
+td:first-child{
+    font-weight: bold;
+}
+
+.paragraph {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
 }

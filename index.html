@@ -3,27 +3,52 @@
     <head>
         <title>sustainability</title>
         <link href="style.css" rel="stylesheet"></link>
-        <style>
-            @font-face {
-                font-family: 'roboto';
-                font-style: normal;
-                font-weight: 400;
-                src: url(https://fonts.gstatic.com/s/roboto/v18/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
-            }
-        </style>
+        <script type="application/javascript" src="main.js"></script>
     </head>
     <body>
         <div class="sidebar" id="sidebar">
             <div style="font-size:22px;padding-left: 10px;">Button</div>
-            <div class="option" id="option1">Option 1</div>
-            <div class="option" id="option2">Option 2</div>
-            <div class="option" id="option3">Option 3</div>
+            
+            <div class="option" id="option1" onclick="toggleProviders()" style="cursor:pointer">Providers</div>        
+            <div id="provider-options" style="display:none;">
+                <a href="google.html">
+                    <div class="option indented">Google</div>
+                </a>
+
+                <a href="amazon.html">
+                    <div class="option indented">AWS</div>
+                </a>
+
+                <a href="azure.html">
+                    <div class="option indented">Azure</div>
+                </a>
+            </div>
+
+            <a href="index.html">
+                <div class="option" id="compare">Compare</div>
+            </a>
 
         </div>
         <div class="content" id="content">
-            <div>
+            <div class="title">
                 Sustainability
             </div>
+            <div class="paragraph">Paragraph</div>
+
+            <table border="1">
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>Google</td>
+                        <td>AWS</td>
+                    </tr>
+                    <tr>
+                        <td>Emissions</td>
+                        <td>20million</td>
+                        <td>billion</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
