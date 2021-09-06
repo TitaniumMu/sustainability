@@ -3,10 +3,13 @@ function gid(id) {
 }
 
 function toggleVisibility(id) {
-    if(gid(id).style.display == 'block'){
-        gid(id).style.display = 'none';
-    }else{
-        gid(id).style.display = 'block';
+    id = id.split(',');
+    for(var i=0;i<id.length;i++) {
+        if(gid(id[i]).style.display == 'block'){
+            gid(id[i]).style.display = 'none';
+        }else{
+            gid(id[i]).style.display = 'block';
+        }
     }
 }
 

@@ -6,10 +6,25 @@
         <script type="application/javascript" src="main.js"></script>
     </head>
     <body>
-        <div class="sidebar" id="sidebar">
-            <div style="font-size:22px;padding-left: 10px;">Button</div>
-            
-            <div class="option" id="option1" onclick="toggleVisibility('provider-options')" style="cursor:pointer">Providers</div>        
+        <div class="mini-sidebar" id="mini-sidebar">
+            <svg style="width:50px;height:50px;color:white;padding-left:5px;cursor:pointer;" viewBox="0 0 24 24" onclick="toggleVisibility('sidebar')">
+                <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+            </svg>
+            <svg style="width:26px;height:26px;color:white;padding:5px 0px 0px 10px;cursor:pointer;" viewBox="0 0 24 24" onclick="toggleVisibility('sidebar,provider-options')">
+                <path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+            </svg>
+            <a href="index.html">
+            <svg style="width:26px;height:26px;color:white;padding:6px 0px 0px 10px;" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z" />
+            </svg>
+            </a>
+        </div>
+
+        <div class="sidebar" id="sidebar" style="display:block;">
+            <svg style="width:50px;height:50px;color:white;padding-left:5px;cursor:pointer;" viewBox="0 0 24 24" onclick="toggleVisibility('sidebar')">
+                <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+            </svg>
+            <div class="option" id="option1" onclick="toggleVisibility('provider-options')" style="cursor:pointer"><svg style="width:26px;height:26px;color:white;;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>Providers</div>        
             <div id="provider-options" style="display:none;">
                 <a href="google.html">
                     <div class="option indented">Google</div>
@@ -25,7 +40,7 @@
             </div>
 
             <a href="index.html">
-                <div class="option" id="compare">Compare</div>
+                <div class="option" id="compare"><svg style="width:26px;height:26px;color:white;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z" /></svg>Compare</div>
             </a>
 
         </div>
@@ -44,7 +59,7 @@
                         <td>Azure</td>
                     </tr>
                     <tr>
-                        <td>Emissions---<svg style="width:24px;height:24px;vertical-align:top;" viewBox="0 0 24 24">
+                        <td>Emissions---<svg style="width:21px;height:21px;vertical-align:top;" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
                         </svg></td>
                         <td>20million</td>
