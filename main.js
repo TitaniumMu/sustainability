@@ -13,6 +13,12 @@ function toggleVisibility(id) {
     }
 }
 
-function showBlurb() {
-    console.log("Blurb shown")
+function toggleSidebar() {
+    if(gid('sidebar').classList.contains('mini')) {
+        gid('sidebar').classList.remove('mini');
+        gid('content').classList.remove('wide');
+    }else{
+        gid('sidebar').classList.add('mini');
+        gid('content').classList.add('wide');
+    }
 }

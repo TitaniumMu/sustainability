@@ -6,11 +6,12 @@
         <script type="application/javascript" src="main.js"></script>
     </head>
     <body>
-        <div class="sidebar" id="sidebar">
-            <div style="font-size:22px;padding-left: 10px;">Button</div>
-            
-            <div class="option" id="option1" onclick="toggleVisibility('provider-options')" style="cursor:pointer">Providers</div>        
-            <div id="provider-options" style="display:none;">
+        <div class="sidebar" id="sidebar" style="display:block;">
+            <svg style="width:50px;height:50px;color:white;padding-left:5px;cursor:pointer;" viewBox="0 0 24 24" onclick="toggleSidebar()">
+                <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+            </svg>
+            <div class="option" id="option1" onclick="toggleVisibility('provider-options');if(gid('sidebar').classList.contains('mini')){toggleSidebar();gid('provider-options').style.display = 'block';};" style="cursor:pointer"><svg style="width:26px;height:26px;color:white;;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg><span>Providers</span></div>
+            <div id="provider-options" style="display:none;" class="option-list">
                 <a href="google.html">
                     <div class="option indented">Google</div>
                 </a>
@@ -25,11 +26,11 @@
             </div>
 
             <a href="index.html">
-                <div class="option" id="compare">Compare</div>
+                <div class="option" id="compare"><svg style="width:26px;height:26px;color:white;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z" /></svg><span>Compare</span></div>
             </a>
 
         </div>
-        <div class="content">
+        <div class="content" id="content">
             <div class="title">Amazon</div>
         </div>
     </body>
