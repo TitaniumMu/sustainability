@@ -19,6 +19,10 @@ body {
     width:60px;
 }
 
+.sidebar-edit {
+    vertical-align:bottom;
+}
+
 .content {
     padding-left:10%;
     padding-right:10%;
