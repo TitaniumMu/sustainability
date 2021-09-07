@@ -10,7 +10,7 @@ body {
 .sidebar {
     width: 200px;
     height: 100%;
-    background-color:#263238;
+    background-color:#0f5024;
     position: absolute;
     user-select: none;
 }
@@ -81,6 +81,7 @@ td:first-child{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
+    width: 70%;
 }
 
 a {
