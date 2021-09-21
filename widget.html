@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>sustainability</title>
         <link href="style.css" rel="stylesheet"></link>
         <script type="application/javascript" src="main.js"></script>
     </head>
@@ -35,35 +34,30 @@
 
         </div>
         <div class="content" id="content">
-            <div class="title">
-                Sustainability
-            </div>
-            <div class="paragraph">Paragraph</div>
+            <div class="title">Widget Maker</div>
+            <div class="paragraph">Use the tool below to make a widget for your website</div>
+            
+            <label for="providers">Select your cloud provider:</label>
+            <select id="providers">
+                <option value="aws">Amazon Web Services</option>
+                <option value="gcp">Google Cloud</option>
+                <option value="azure">Microsoft Azure</option>
+            </select>
 
-            <table border="1">
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td>Google</td>
-                        <td>AWS</td>
-                        <td>Azure</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions (tCO2e) <svg style="width:21px;height:21px;vertical-align:top;" viewBox="0 0 24 24" onclick="gid('emissions-tooltip').style.visibility = 'visible';">
-                            <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
-                        </svg><span class="tooltip" id="emissions-tooltip"><p class="tooltip-text">This is the unit for measuring emissions. It means that a certaing number of somehing or other is released into our flatmosphere</p></span></td>
-                        <td>20million</td>
-                        <td>billion</td>
-                        <td>Azure</td>
-                    </tr>
-                    <tr>
-                        <td>Operating Status</td>
-                        <td><a href="defs.html">Carbon Neutral</a></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="gcp-services">
+
+                <label for="gcp-region">Select the region of the server:</label>
+                <select id="gcp-region">
+                    <option value="unknown">Unknown</option>
+                </select>
+
+                <div class="paragraph">Which of the following Google Cloud services do you use?</div>
+
+                <label for="storage-box">Storage</label>
+                <input type="checkbox" id="storage-box"><br>
+                <label for="hosting-box">Hosting</label>
+                <input type="checkbox" id="hosting-box">
+            </div>
         </div>
     </body>
 </html>
