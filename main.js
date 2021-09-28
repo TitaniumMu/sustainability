@@ -22,3 +22,11 @@ function toggleSidebar() {
         gid('content').classList.add('wide');
     }
 }
+
+function ChangeSelect(toHide, val) {
+    var hideClass = document.querySelectorAll(toHide);
+    for(var i=0;i<hideClass.length;i++) {
+        hideClass[i].style.display = 'none';
+    }
+    gid(val).style.display = 'block';
+}

@@ -102,3 +102,7 @@ td:first-child{
 a {
     text-decoration: none;
 }
+
+.hideOnSelect {
+    display: none;
+}

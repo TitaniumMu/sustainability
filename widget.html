@@ -38,17 +38,44 @@
             <div class="paragraph">Use the tool below to make a widget for your website</div>
             
             <label for="providers">Select your cloud provider:</label>
-            <select id="providers">
+            <select id="providers" onchange="ChangeSelect('provider-services', this.value + '-services');">
                 <option value="aws">Amazon Web Services</option>
                 <option value="gcp">Google Cloud</option>
                 <option value="azure">Microsoft Azure</option>
             </select>
 
-            <div id="gcp-services">
+            <div id="gcp-services" class="hideOnSelect, .provider-services" style="display:none">
 
                 <label for="gcp-region">Select the region of the server:</label>
                 <select id="gcp-region">
                     <option value="unknown">Unknown</option>
+                    <option value="asia-east1">Asia (Taiwan)</option>
+                    <option value="asia-east2">Asia (Hong kong)</option>
+                    <option value="asia-northeast1">Asia (Tokyo)</option>
+                    <option value="asia-northeast2">Asia (Osaka)</option>
+                    <option value="asia-northeast3">Asia (Seoul)</option>
+                    <option value="asia-south1">Asia (Mumbai)</option>
+                    <option value="asia-south2">Asia (Delhi)</option>
+                    <option value="asia-southeast1">Asia (Singapore)</option>
+                    <option value="asia-southeast2">Asia (Jakarta)</option>
+                    <option value="australia-southeast1">Australia (Sydney)</option>
+                    <option value="australia-southeast2">Australia (Melbourne)</option>
+                    <option value="europe-central2">Europe (Warsaw)</option>
+                    <option value="europe-north1">Europe (Finland)</option>
+                    <option value="europe-west1">Europe (Belgium)</option>
+                    <option value="europe-west2">Europe (London)</option>
+                    <option value="europe-west3">Europe (Frankfurt)</option>
+                    <option value="europe-west4">Europe (Netherlands)</option>
+                    <option value="europe-west6">Europe (Zurich)</option>
+                    <option value="northamerica-northeast1">North America (Montréal)</option>
+                    <option value="southamerica-east1">South America (São Paolo)</option>
+                    <option value="us-central1">US (Iowa)</option>
+                    <option value="us-east1">US (South Carolina)</option>
+                    <option value="us-east4">US (North Virginia)</option>
+                    <option value="us-west1">US (Oregon)</option>
+                    <option value="us-west2">US West (Los Angeles)</option>
+                    <option value="us-west3">US (Salt Lake City)</option>
+                    <option value="us-west4">US (Las Vegas)</option>
                 </select>
 
                 <div class="paragraph">Which of the following Google Cloud services do you use?</div>
