@@ -106,3 +106,7 @@ a {
 .hideOnSelect {
     display: none;
 }
+
+.provider-services {
+    display: none;
+}

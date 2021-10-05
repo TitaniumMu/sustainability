@@ -23,10 +23,10 @@ function toggleSidebar() {
     }
 }
 
-function ChangeSelect(toHide, val) {
+function ChangeProviderSelect(toHide, val, service) {
     var hideClass = document.querySelectorAll(toHide);
     for(var i=0;i<hideClass.length;i++) {
         hideClass[i].style.display = 'none';
     }
-    gid(val).style.display = 'block';
+    if(gid(val)) { gid(val).style.display = 'block'; }
 }
