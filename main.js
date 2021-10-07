@@ -23,7 +23,7 @@ function toggleSidebar() {
     }
 }
 
-function ChangeProviderSelect(toHide, val, service) {
+function ChangeProviderSelect(toHide, val, provider) {
     var hideClass = document.querySelectorAll(toHide);
     for(var i=0;i<hideClass.length;i++) {
         hideClass[i].style.display = 'none';

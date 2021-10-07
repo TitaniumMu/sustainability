@@ -1,0 +1,47 @@
+{
+    "aws": {
+        "replicationFactor": {},
+        "CpuUtilization": 50,
+        "minWatts": 0.74,
+        "maxWatts": 3.5,
+        "memoryCoefficient": 0.000392,
+        "networkingCoefficient": 0.001,
+        "SSDCoefficient": 1.2,
+        "HDDCoefficient": 0.65,
+
+        "unknown": {
+            "powerUsageEffectiveness": 1.135,
+            "emissionsFactor": 0.00038738
+        }
+    },
+    "azure": {
+        "replicationFactor": {},
+        "CpuUtilization": 50,
+        "minWatts": 0.71,
+        "maxWatts": 4.26,
+        "memoryCoefficient": 0.000392,
+        "networkingCoefficient": 0.001,
+        "SSDCoefficient": 1.2,
+        "HDDCoefficient": 0.65,
+
+        "unknown": {
+            "powerUsageEffectiveness": 1.1,
+            "emissionsFactor": 0.0004074
+        }
+    },
+    "gcp": {
+        "replicationFactor": {},
+        "CpuUtilization": 50,
+        "minWatts": 0.78,
+        "maxWatts": 3.76,
+        "memoryCoefficient": 0.000392,
+        "networkingCoefficient": 0.001,
+        "SSDCoefficient": 1.2,
+        "HDDCoefficient": 0.65,
+
+        "unknown": {
+            "powerUsageEffectiveness": 1.185,
+            "emissionsFactor": 0.0004116296296
+        }
+    }
+}
