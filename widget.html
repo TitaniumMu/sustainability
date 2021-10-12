@@ -89,10 +89,15 @@
 
                 <div class="paragraph">Which of the following Google Cloud services do you use?</div>
 
-                <label for="storage-box">Storage</label>
-                <input type="checkbox" id="storage-box"><br>
+                <label for="compute-box">Computing</label>
+                <input type="checkbox" id="compute-box" onchange="toggleVisibility('vCPUs')"><br>
+                <div id="vCPUs" style="display:none">
+                    <label for="vCPUHours" id="vCPUlabel">vCPUHours: </label>
+                    <input type="number" id="vCPUHours" value="1">
+                </div>
                 <label for="hosting-box">Hosting</label>
-                <input type="checkbox" id="hosting-box">
+                <input type="checkbox" id="hosting-box"><br>
+                <button id="calc-button" onclick="console.log(calculate(providers.value, {'compute': [vCPUHours.value || 0, 'unknown']}))" style="margin-top: 10px;">Calculate Emissions</button>
             </div>
             <div id="azure-services" class="provider-services" style="display:none">
 

@@ -52,6 +52,12 @@ const estimationConstants = {
 console.log(computeKWh(1, "aws",))
 // console.log(estimationConstants.aws.unknown.emissionsFactor)
 
+function calculate(provider, data) {  //Format data like so: {'compute': [vCPUHours, region], 'memory': [gigabyetHours, region]}
+    return(
+        (data.compute ? estimateCO2(computeKWh(data.compute[0], provider, data.compute[1]), provider, data.compute[1]) : 0)
+        )
+}
+
 function estimateCO2(kilowattHours, provider, region) { //Emissions factor is metric tonne per kWh
     region = region || "unknown";
     return (kilowattHours * (estimationConstants[provider][region].emissionsFactor));
