@@ -54,7 +54,10 @@ console.log(computeKWh(1, "aws",))
 
 function calculate(provider, data) {  //Format data like so: {'compute': [vCPUHours, region], 'memory': [gigabyetHours, region]}
     return(
-        (data.compute ? estimateCO2(computeKWh(data.compute[0], provider, data.compute[1]), provider, data.compute[1]) : 0)
+        (data.compute ? estimateCO2(computeKWh(data.compute[0], provider, data.compute[1]), provider, data.compute[1]) : 0) +
+        (data.memory ? estimateCO2(memoryKWh(data.memory[0], provider, data.memory[1]), provider, data.memory[1]) : 0) +
+        (data.networking ? estimateCO2(networkingKWh(data.networking[0], provider, data.networking[1]), provider, data.networking[1]) : 0) +
+        (data.storage ? estimateCO2(storageKWh(data.storage[0], provider, data.storage[1]), provider, data.storage[1]) : 0)
         )
 }
 
@@ -78,3 +81,7 @@ function memoryKWh(gigabyteHours, provider, region) {
     region = region || "unknown";
     gigabyteHours * this.coefficient * powerUsageEffectiveness * replicationFactor
 }
+
+function networkingKWh(gigabytes, provider, region) {}
+
+function storageKWh(gigabyteHours, provider, region) {} //Formula uses TerabyteHours, make sure to convert!!
