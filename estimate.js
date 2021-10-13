@@ -49,7 +49,7 @@ const estimationConstants = {
         }
     }
 }
-console.log(computeKWh(1, "aws",))
+// console.log(computeKWh(1, "aws",))
 // console.log(estimationConstants.aws.unknown.emissionsFactor)
 
 function calculate(provider, data) {  //Format data like so: {'compute': [vCPUHours, region], 'memory': [gigabyetHours, region]}
@@ -79,9 +79,37 @@ function computeKWh(vCPUHours, provider, region) {
 
 function memoryKWh(gigabyteHours, provider, region) {
     region = region || "unknown";
+<<<<<<< Updated upstream
     gigabyteHours * this.coefficient * powerUsageEffectiveness * replicationFactor
 }
 
 function networkingKWh(gigabytes, provider, region) {}
 
 function storageKWh(gigabyteHours, provider, region) {} //Formula uses TerabyteHours, make sure to convert!!
+=======
+    var PUE = estimationConstants[provider][region].powerUsageEffectiveness;
+    var replicationFactor = (isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
+    var coefficient = estimationConstants[provider].memoryCoefficient;
+
+    return (gigabyteHours * coefficient * PUE * replicationFactor);
+}
+
+function networkingKWh(gigabytes, provider, region) {
+    region = region || "unknown";
+    var PUE = estimationConstants[provider][region].powerUsageEffectiveness;
+    var coefficient = estimationConstants[provider].networkingCoefficient;
+
+    return (gigabytes * coefficient * PUE);
+}
+
+console.log(storageKWh(2, "HDD", "aws", "test"))
+function storageKWh(gigabyteHours, driveType, provider, region) {
+    region = region || "unknown";
+    var terabyteHours = gigabyteHours / 1000;
+    var PUE = estimationConstants[provider][region].powerUsageEffectiveness;
+    var replicationFactor = (isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
+    var coefficient = estimationConstants[provider][driveType + "Coefficient"];
+    // return (coefficient);
+    return ((terabyteHours * coefficient * PUE * replicationFactor) / 1000);
+}
+>>>>>>> Stashed changes
