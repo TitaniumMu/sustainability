@@ -49,21 +49,29 @@ const estimationConstants = {
         }
     }
 }
+var demoData = {'compute': [2, "test"], 'memory': [5, "test"], 'netorking': [7, "test"], 'storage': [3, "SSD"]};
 // console.log(computeKWh(1, "aws",))
-// console.log(estimationConstants.aws.unknown.emissionsFactor)
+// console.log(memoryKWh(2, "aws"))
+// console.log(storageKWh(2, "HDD", "aws", "test"))
+// console.log(networkingKWh(2, "aws"))
+// console.log(estimationConstants.aws.memoryCoefficient)
 
+console.log(calculate("aws", demoData))
+// console.log(estimateCO2(computeKWh(2, "aws", "test"), "aws"))
+// console.log(estimationConstants.aws.test.emissionsFactor)
 function calculate(provider, data) {  //Format data like so: {'compute': [vCPUHours, region], 'memory': [gigabyetHours, region]}
     return(
-        (data.compute ? estimateCO2(computeKWh(data.compute[0], provider, data.compute[1]), provider, data.compute[1]) : 0) +
+        (data.compute ? estimateCO2(computeKWh(data.compute[0], provider, data.compute[1]), provider, data.compute[1]) : 0) +//Estimate functions need region/provider as well
         (data.memory ? estimateCO2(memoryKWh(data.memory[0], provider, data.memory[1]), provider, data.memory[1]) : 0) +
         (data.networking ? estimateCO2(networkingKWh(data.networking[0], provider, data.networking[1]), provider, data.networking[1]) : 0) +
-        (data.storage ? estimateCO2(storageKWh(data.storage[0], provider, data.storage[1]), provider, data.storage[1]) : 0)
+        (data.storage ? estimateCO2(storageKWh(data.storage[0], data.storage[1], provider, data.storage[2]), provider, data.storage[1]) : 0)
         )
 }
 
 function estimateCO2(kilowattHours, provider, region) { //Emissions factor is metric tonne per kWh
     region = region || "unknown";
-    return (kilowattHours * (estimationConstants[provider][region].emissionsFactor));
+    var emissionsFactor = estimationConstants[provider][region].emissionsFactor;
+    return (kilowattHours * emissionsFactor);
 }
 
 function computeKWh(vCPUHours, provider, region) {
@@ -79,19 +87,11 @@ function computeKWh(vCPUHours, provider, region) {
 
 function memoryKWh(gigabyteHours, provider, region) {
     region = region || "unknown";
-<<<<<<< Updated upstream
-    gigabyteHours * this.coefficient * powerUsageEffectiveness * replicationFactor
-}
-
-function networkingKWh(gigabytes, provider, region) {}
-
-function storageKWh(gigabyteHours, provider, region) {} //Formula uses TerabyteHours, make sure to convert!!
-=======
     var PUE = estimationConstants[provider][region].powerUsageEffectiveness;
     var replicationFactor = (isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
-    var coefficient = estimationConstants[provider].memoryCoefficient;
+    var coefficient = estimationConstants[provider]['memoryCoefficient'];
 
-    return (gigabyteHours * coefficient * PUE * replicationFactor);
+    return(gigabyteHours * coefficient * PUE * replicationFactor)
 }
 
 function networkingKWh(gigabytes, provider, region) {
@@ -102,8 +102,7 @@ function networkingKWh(gigabytes, provider, region) {
     return (gigabytes * coefficient * PUE);
 }
 
-console.log(storageKWh(2, "HDD", "aws", "test"))
-function storageKWh(gigabyteHours, driveType, provider, region) {
+function storageKWh(gigabyteHours, driveType, provider, region) {//Formula uses TerabyteHours, make sure to convert!!
     region = region || "unknown";
     var terabyteHours = gigabyteHours / 1000;
     var PUE = estimationConstants[provider][region].powerUsageEffectiveness;
@@ -112,4 +111,3 @@ function storageKWh(gigabyteHours, driveType, provider, region) {
     // return (coefficient);
     return ((terabyteHours * coefficient * PUE * replicationFactor) / 1000);
 }
->>>>>>> Stashed changes
