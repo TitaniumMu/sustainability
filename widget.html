@@ -2,8 +2,8 @@
 <html>
     <head>
         <link href="style.css" rel="stylesheet"></link>
-        <script type="application/javascript" src="main.js"></script>
         <script type="application/javascript" src="estimate.js"></script>
+        <script type="application/javascript" src="main.js"></script>
     </head>
     <body>
         <div class="sidebar" id="sidebar" style="display:block;">
@@ -48,55 +48,19 @@
 
             <div id="gcp-services" class="provider-services" style="display:none">
 
-                <!-- <label for="gcp-region">Select the region of the server:</label>
-                <select id="gcp-region">
-                    <option value="unknown">Unknown</option>
-                    <option value="asia-east1">Asia (Taiwan)</option>
-                    <option value="asia-east2">Asia (Hong kong)</option>
-                    <option value="asia-northeast1">Asia (Tokyo)</option>
-                    <option value="asia-northeast2">Asia (Osaka)</option>
-                    <option value="asia-northeast3">Asia (Seoul)</option>
-                    <option value="asia-south1">Asia (Mumbai)</option>
-                    <option value="asia-south2">Asia (Delhi)</option>
-                    <option value="asia-southeast1">Asia (Singapore)</option>
-                    <option value="asia-southeast2">Asia (Jakarta)</option>
-                    <option value="australia-southeast1">Australia (Sydney)</option>
-                    <option value="australia-southeast2">Australia (Melbourne)</option>
-                    <option value="europe-central2">Europe (Warsaw)</option>
-                    <option value="europe-north1">Europe (Finland)</option>
-                    <option value="europe-west1">Europe (Belgium)</option>
-                    <option value="europe-west2">Europe (London)</option>
-                    <option value="europe-west3">Europe (Frankfurt)</option>
-                    <option value="europe-west4">Europe (Netherlands)</option>
-                    <option value="europe-west6">Europe (Zurich)</option>
-                    <option value="northamerica-northeast1">North America (Montréal)</option>
-                    <option value="southamerica-east1">South America (São Paolo)</option>
-                    <option value="us-central1">US (Iowa)</option>
-                    <option value="us-east1">US (South Carolina)</option>
-                    <option value="us-east4">US (North Virginia)</option>
-                    <option value="us-west1">US (Oregon)</option>
-                    <option value="us-west2">US West (Los Angeles)</option>
-                    <option value="us-west3">US (Salt Lake City)</option>
-                    <option value="us-west4">US (Las Vegas)</option>
-                    <option value="us-multi">US (Multiple Regions)</option>
-                    <option value="europe-multi">Europe (Multiple Regions)</option>
-                    <option value="asia-multi">Asia (Multiple Regions)</option>
-                    <option value="asia-dual">Asia (Dual Regions)</option>
-                    <option value="europe-dual">Europe (Dual Regions)</option>
-                    <option value="northamerica-dual">Nam4 / North America (Dual Regions)</option>
-
-                </select> -->
 
                 <div class="paragraph">Which of the following Google Cloud services do you use?</div>
 
                 <label for="compute-box">Computing</label>
-                <input type="checkbox" id="compute-box" onchange="toggleVisibility('vCPUs')"><br>
-                <div id="vCPUs" style="display:none">
-                    <label for="vCPUHours" id="vCPUlabel">vCPUHours: </label>
-                    <input type="number" id="vCPUHours" value="1">
+                <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info')"><br>
+                <div id="gcp-compute-info" style="display:none;">
+                    <label for="gcp-compute-region">Computing Region: </label>
+                    <select id="gcp-compute-region"></select><br>
+                    <label for="gcp-vCPUHours">vCPUHours: </label>
+                    <input type="number" id="gcp-vCPUHours" value="1">
                 </div>
-                <label for="hosting-box">Hosting</label>
-                <input type="checkbox" id="hosting-box"><br>
+                <label for="memory-box">Hosting</label>
+                <input type="checkbox" id="memory-box"><br>
                 <button id="calc-button" onclick="console.log(calculate(providers.value, {'compute': [vCPUHours.value || 0, 'unknown']}))" style="margin-top: 10px;">Calculate Emissions</button>
             </div>
             <div id="azure-services" class="provider-services" style="display:none">

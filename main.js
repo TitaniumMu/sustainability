@@ -30,3 +30,13 @@ function ChangeProviderSelect(toHide, val, provider) {
     }
     if(gid(val)) { gid(val).style.display = 'block'; }
 }
+
+function fillRegionSelect(provider, selectid) {
+    var options = gid(selectid).options;
+    for(var i=0;i<Object.keys(estimationConstants[provider].regions).length;i++){
+        var newOption = document.createElement("option");
+        newOption.value = estimationConstants[provider].regions
+        console.log(options)
+        var optionname = estimationConstants[provider]
+    }
+}
