@@ -52,7 +52,7 @@
                 <div class="paragraph">Which of the following Google Cloud services do you use?</div>
 
                 <label for="compute-box">Computing</label>
-                <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info')"><br>
+                <input type="checkbox" id="gcp-compute-box" onchange="toggleVisibility('gcp-compute-info');fillRegionSelect('gcp','gcp-compute-region');"><br>
                 <div id="gcp-compute-info" style="display:none;">
                     <label for="gcp-compute-region">Computing Region: </label>
                     <select id="gcp-compute-region"></select><br>
@@ -61,7 +61,7 @@
                 </div>
                 <label for="memory-box">Hosting</label>
                 <input type="checkbox" id="memory-box"><br>
-                <button id="calc-button" onclick="console.log(calculate(providers.value, {'compute': [vCPUHours.value || 0, 'unknown']}))" style="margin-top: 10px;">Calculate Emissions</button>
+                <button id="calc-button" onclick="console.log(calculate(providers.value, {'compute': [(gid('gcp-compute-box').checked ? gid('gcp-vCPUHours').value : 0), 'unknown']}))" style="margin-top: 10px;">Calculate Emissions</button>
             </div>
             <div id="azure-services" class="provider-services" style="display:none">
 

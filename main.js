@@ -32,11 +32,12 @@ function ChangeProviderSelect(toHide, val, provider) {
 }
 
 function fillRegionSelect(provider, selectid) {
-    var options = gid(selectid).options;
+    // console.log(estimationConstants[provider].regions[Object.keys(estimationConstants[provider].regions)[4]].name)
     for(var i=0;i<Object.keys(estimationConstants[provider].regions).length;i++){
         var newOption = document.createElement("option");
-        newOption.value = estimationConstants[provider].regions
-        console.log(options)
-        var optionname = estimationConstants[provider]
+        newOption.value = Object.keys(estimationConstants[provider].regions)[i];
+        newOption.text = estimationConstants[provider].regions[Object.keys(estimationConstants[provider].regions)[i]].name;
+        gid(selectid).appendChild(newOption);
     }
+    // console.log(options)
 }
