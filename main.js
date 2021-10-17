@@ -23,7 +23,7 @@ function toggleSidebar() {
     }
 }
 
-function ChangeProviderSelect(toHide, val, provider) {
+function ChangeProviderSelect(toHide, val, provider) {//Obselete due to decentralization of service providers in widget builder
     var hideClass = document.querySelectorAll(toHide);
     for(var i=0;i<hideClass.length;i++) {
         hideClass[i].style.display = 'none';
@@ -32,12 +32,20 @@ function ChangeProviderSelect(toHide, val, provider) {
 }
 
 function fillRegionSelect(provider, selectid) {
-    // console.log(estimationConstants[provider].regions[Object.keys(estimationConstants[provider].regions)[4]].name)
-    for(var i=0;i<Object.keys(estimationConstants[provider].regions).length;i++){
-        var newOption = document.createElement("option");
-        newOption.value = Object.keys(estimationConstants[provider].regions)[i];
-        newOption.text = estimationConstants[provider].regions[Object.keys(estimationConstants[provider].regions)[i]].name;
-        gid(selectid).appendChild(newOption);
+    selectid = gid(selectid);
+    while(selectid.firstChild) {//Clears all options
+        selectid.firstChild.remove();
     }
-    // console.log(options)
+    if(provider == 'none'){
+        var newOption = document.createElement("option");
+        newOption.text = 'Please select a provider';
+        selectid.appendChild(newOption);
+    } else {
+        for(var i=0;i<Object.keys(estimationConstants[provider].regions).length;i++){//Populates new options
+            var newOption = document.createElement("option");
+            newOption.value = Object.keys(estimationConstants[provider].regions)[i];
+            newOption.text = estimationConstants[provider].regions[Object.keys(estimationConstants[provider].regions)[i]].name;
+            selectid.appendChild(newOption);
+        }
+    }
 }

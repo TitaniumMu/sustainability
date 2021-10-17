@@ -2,8 +2,8 @@
 <html>
     <head>
         <link href="style.css" rel="stylesheet"></link>
-        <script type="application/javascript" src="estimate.js"></script>
-        <script type="application/javascript" src="main.js"></script>
+        <script type="application/javascript" charset="utf-8" src="estimate.js"></script>
+        <script type="application/javascript" charset="utf-8" src="main.js"></script>
     </head>
     <body>
         <div class="sidebar" id="sidebar" style="display:block;">
@@ -38,114 +38,81 @@
             <div class="title">Widget Maker</div>
             <div class="paragraph">Use the tool below to make a widget for your website</div>
             
-            <label for="providers">Select your cloud provider:</label>
-            <select id="providers" onchange="ChangeProviderSelect('.provider-services', this.value + '-services', this.value);">
-                <option>--Select an option--</option>
-                <option value="aws">Amazon Web Services</option>
-                <option value="gcp">Google Cloud</option>
-                <option value="azure">Microsoft Azure</option>
-            </select>
 
-            <div id="gcp-services" class="provider-services" style="display:none">
+            <div id="services" class="provider-services" style="display:block">
 
 
-                <div class="paragraph">Which of the following Google Cloud services do you use?</div>
+                <div class="paragraph">Which of the following cloud services do you use?</div>
 
                 <label for="compute-box">Computing</label>
-                <input type="checkbox" id="gcp-compute-box" onchange="toggleVisibility('gcp-compute-info');fillRegionSelect('gcp','gcp-compute-region');"><br>
-                <div id="gcp-compute-info" style="display:none;">
-                    <label for="gcp-compute-region">Computing Region: </label>
-                    <select id="gcp-compute-region"></select><br>
-                    <label for="gcp-vCPUHours">vCPUHours: </label>
-                    <input type="number" id="gcp-vCPUHours" value="1">
+                <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info');"><br>
+              
+                <div id="compute-info" style="display:none;">
+                    <label for="compute-provider">Select your computing provider:</label>
+                    <select id="compute-provider" onchange="fillRegionSelect(this.value,'compute-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="compute-region">Computing Region: </label>
+                    <select id="compute-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="vCPUHours">vCPUHours: </label>
+                    <input type="number" id="vCPUHours" value="1"><br>
+
+                    <label for="memory-gigabyteHours">Memory GigabyteHours: </label>
+                    <input type="number" id="memory-gigabyteHours" value="0">
                 </div>
-                <label for="memory-box">Hosting</label>
-                <input type="checkbox" id="memory-box"><br>
-                <button id="calc-button" onclick="console.log(calculate(providers.value, {'compute': [(gid('gcp-compute-box').checked ? gid('gcp-vCPUHours').value : 0), 'unknown']}))" style="margin-top: 10px;">Calculate Emissions</button>
-            </div>
-            <div id="azure-services" class="provider-services" style="display:none">
-
-                <!-- <label for="azure-region">Select the region of the server:</label>
-                <select id="azure-region">
-                    <option value="unknown">Unknown</option>
-                    <option value="asia-east1">Asia (Taiwan)</option>
-                    <option value="asia-east2">Asia (Hong kong)</option>
-                    <option value="asia-northeast1">Asia (Tokyo)</option>
-                    <option value="asia-northeast2">Asia (Osaka)</option>
-                    <option value="asia-northeast3">Asia (Seoul)</option>
-                    <option value="asia-south1">Asia (Mumbai)</option>
-                    <option value="asia-south2">Asia (Delhi)</option>
-                    <option value="asia-southeast1">Asia (Singapore)</option>
-                    <option value="asia-southeast2">Asia (Jakarta)</option>
-                    <option value="australia-southeast1">Australia (Sydney)</option>
-                    <option value="australia-southeast2">Australia (Melbourne)</option>
-                    <option value="europe-central2">Europe (Warsaw)</option>
-                    <option value="europe-north1">Europe (Finland)</option>
-                    <option value="europe-west1">Europe (Belgium)</option>
-                    <option value="europe-west2">Europe (London)</option>
-                    <option value="europe-west3">Europe (Frankfurt)</option>
-                    <option value="europe-west4">Europe (Netherlands)</option>
-                    <option value="europe-west6">Europe (Zurich)</option>
-                    <option value="northamerica-northeast1">North America (Montréal)</option>
-                    <option value="southamerica-east1">South America (São Paolo)</option>
-                    <option value="us-central1">US (Iowa)</option>
-                    <option value="us-east1">US (South Carolina)</option>
-                    <option value="us-east4">US (North Virginia)</option>
-                    <option value="us-west1">US (Oregon)</option>
-                    <option value="us-west2">US West (Los Angeles)</option>
-                    <option value="us-west3">US (Salt Lake City)</option>
-                    <option value="us-west4">US (Las Vegas)</option>
-                </select> -->
-
-                <div class="paragraph">Which of the following Microsoft Azure services do you use?</div>
 
                 <label for="storage-box">Storage</label>
-                <input type="checkbox" id="storage-box"><br>
-                <label for="hosting-box">Hosting</label>
-                <input type="checkbox" id="hosting-box">
+                <input type="checkbox" id="storage-box" onchange="toggleVisibility('storage-info')"><br>
+
+                <div id="storage-info" style="display:none;">
+                    <label for="storage-provider">Select your storage provider:</label>
+                    <select id="storage-provider" onchange="fillRegionSelect(this.value,'storage-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="storage-region">Storage Region: </label>
+                    <select id="storage-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="drive-type">Drive type: </label>
+                    <select id="drive-type">
+                        <option value="HDD">HDD</option>
+                        <option value="SSD">SSD</option>
+                    </select><br>
+
+                    <label for="storage-gigabyteHours">Storage GigabyteHours: </label>
+                    <input type="number" id="storage-gigabyteHours" value="0">
+                </div>
+
+                <label for="networking-box">Networking</label>
+                <input type="checkbox" id="networking-box" onchange="toggleVisibility('networking-info')"><br>
+                
+                <div id="networking-info" style="display:none;">
+                    <label for="networking-provider">Select your networking provider:</label>
+                    <select id="networking-provider" onchange="fillRegionSelect(this.value,'networking-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="networking-region">Networking Region: </label>
+                    <select id="networking-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="networking-gigabytes">Networking Gigabytes: </label>
+                    <input type="number" id="networking-gigabytes" value="1"><br>
+                </div>
+
+
+                <button id="calc-button" onclick="console.log(calculate({'compute': [gid('vCPUHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'memory': [gid('memory-gigabyteHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'storage': [gid('storage-gigabyteHours').value, gid('drive-type').value, gid('storage-provider').value, gid('storage-region').value, gid('storage-box').checked], 'networking': [gid('networking-gigabytes').value, gid('networking-provider').value, gid('networking-region').value, gid('networking-box').checked]}))" style="margin-top: 10px;">Calculate Emissions</button>
             </div>
-            <div id="aws-services" class="provider-services" style="display:none">
-
-                <!-- <label for="aws-region">Select the region of the server:</label>
-                <select id="aws-region">
-                    <option value="unknown">Unknown</option>
-                    <option value="asia-east1">Asia (Taiwan)</option>
-                    <option value="asia-east2">Asia (Hong kong)</option>
-                    <option value="asia-northeast1">Asia (Tokyo)</option>
-                    <option value="asia-northeast2">Asia (Osaka)</option>
-                    <option value="asia-northeast3">Asia (Seoul)</option>
-                    <option value="asia-south1">Asia (Mumbai)</option>
-                    <option value="asia-south2">Asia (Delhi)</option>
-                    <option value="asia-southeast1">Asia (Singapore)</option>
-                    <option value="asia-southeast2">Asia (Jakarta)</option>
-                    <option value="australia-southeast1">Australia (Sydney)</option>
-                    <option value="australia-southeast2">Australia (Melbourne)</option>
-                    <option value="europe-central2">Europe (Warsaw)</option>
-                    <option value="europe-north1">Europe (Finland)</option>
-                    <option value="europe-west1">Europe (Belgium)</option>
-                    <option value="europe-west2">Europe (London)</option>
-                    <option value="europe-west3">Europe (Frankfurt)</option>
-                    <option value="europe-west4">Europe (Netherlands)</option>
-                    <option value="europe-west6">Europe (Zurich)</option>
-                    <option value="northamerica-northeast1">North America (Montréal)</option>
-                    <option value="southamerica-east1">South America (São Paolo)</option>
-                    <option value="us-central1">US (Iowa)</option>
-                    <option value="us-east1">US (South Carolina)</option>
-                    <option value="us-east4">US (North Virginia)</option>
-                    <option value="us-west1">US (Oregon)</option>
-                    <option value="us-west2">US West (Los Angeles)</option>
-                    <option value="us-west3">US (Salt Lake City)</option>
-                    <option value="us-west4">US (Las Vegas)</option>
-                </select> -->
-
-                <div class="paragraph">Which of the following Amazon Web Services do you use?</div>
-
-                <label for="storage-box">Storage</label>
-                <input type="checkbox" id="storage-box"><br>
-                <label for="hosting-box">Hosting</label>
-                <input type="checkbox" id="hosting-box">
-            </div>
-
         </div>
     </body>
 </html>
