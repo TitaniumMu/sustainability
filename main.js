@@ -23,14 +23,6 @@ function toggleSidebar() {
     }
 }
 
-function ChangeProviderSelect(toHide, val, provider) {//Obselete due to decentralization of service providers in widget builder
-    var hideClass = document.querySelectorAll(toHide);
-    for(var i=0;i<hideClass.length;i++) {
-        hideClass[i].style.display = 'none';
-    }
-    if(gid(val)) { gid(val).style.display = 'block'; }
-}
-
 function fillRegionSelect(provider, selectid) {
     selectid = gid(selectid);
     while(selectid.firstChild) {//Clears all options
