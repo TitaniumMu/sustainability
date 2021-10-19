@@ -41,3 +41,11 @@ function fillRegionSelect(provider, selectid) {
         }
     }
 }
+
+function showFootprint(data) {
+    var tonnesCO2 = calculate(data);
+    var kgCO2 = tonnesCO2 * 1000
+
+    gid('emissions').innerHTML = "Your calculated emissions are " + kgCO2 + "Kg CO2e";
+    gid('emissions').style.display = "block"
+}

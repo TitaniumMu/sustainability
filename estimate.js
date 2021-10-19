@@ -386,6 +386,30 @@ const estimationConstants = {
         }
     }
 }
+console.log(rankRegions())
+function rankRegions() {
+    var regionEmissionsFactors = {};
+    var aws = estimationConstants.aws.regions;
+    var azure = estimationConstants.azure.regions;
+    var gcp = estimationConstants.gcp.regions;
+
+    for(var i=0;i<Object.keys(aws).length;i++) {
+        regionEmissionsFactors['aws-'+Object.keys(aws)[i]] = aws[Object.keys(aws)[i]].emissionsFactor;
+    }
+    for(var i=0;i<Object.keys(azure).length;i++) {
+        regionEmissionsFactors['azure-'+Object.keys(azure)[i]] = azure[Object.keys(azure)[i]].emissionsFactor;
+    }
+    for(var i=0;i<Object.keys(gcp).length;i++) {
+        regionEmissionsFactors['gcp-'+Object.keys(gcp)[i]] = gcp[Object.keys(gcp)[i]].emissionsFactor;
+    }
+
+    var keys = Object.keys(regionEmissionsFactors);
+    for(var i=0;i<keys.length;i++) {
+        
+    }
+
+    return regionEmissionsFactors;
+}
 
 function calculate(data) { //Format data like so: {'compute': [vCPUHours, provider, region, consider?], 'memory': [gigabyetHours, provider, region, consider?]}
     return(

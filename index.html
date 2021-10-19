@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>sustainability</title>
         <link href="style.css" rel="stylesheet"></link>
-        <script type="application/javascript" src="main.js"></script>
+        <script type="application/javascript" charset="utf-8" src="estimate.js"></script>
+        <script type="application/javascript" charset="utf-8" src="main.js"></script>
     </head>
     <body>
         <div class="sidebar" id="sidebar" style="display:block;">
             <svg style="width:50px;height:50px;color:white;padding-left:5px;cursor:pointer;" viewBox="0 0 24 24" onclick="toggleSidebar()">
                 <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
             </svg>
-            <div class="option" id="option1" onclick="toggleVisibility('provider-options');if(gid('sidebar').classList.contains('mini')){toggleSidebar();gid('provider-options').style.display = 'block';};" style="cursor:pointer"><svg style="width:26px;height:26px;color:white;;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg><span>Providers</span></div>
+            <!-- <div class="option" id="option1" onclick="toggleVisibility('provider-options');if(gid('sidebar').classList.contains('mini')){toggleSidebar();gid('provider-options').style.display = 'block';};" style="cursor:pointer"><svg style="width:26px;height:26px;color:white;;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg><span>Providers</span></div>
             <div id="provider-options" style="display:none;" class="option-list">
                 <a href="google.html">
                     <div class="option indented">Google</div>
@@ -23,47 +23,99 @@
                 <a href="azure.html">
                     <div class="option indented">Azure</div>
                 </a>
-            </div>
+            </div> -->
 
-            <div class="option" id="compare" onclick="window.location.href='index.html'"><svg style="width:26px;height:26px;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z" /></svg><span>Compare</span></div>
-            
-            <div class="option" id="widget" onclick="window.location.href='widget.html'"><span>Widget</span></div>
+            <div class="option" id="widget" onclick="window.location.href='index.html'"><svg style="width:26px;height:26px;vertical-align:top;" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+            </svg><span>Home</span></div>
 
-            <div id="edit" class="option" style="position: absolute; bottom:20px;"><svg style="width:24px;height:24px;vertical-align:top;" viewBox="0 0 24 24">
+            <!-- <div class="option" id="compare" onclick="window.location.href='compare.html'"><svg style="width:26px;height:26px;vertical-align:top;" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z" /></svg><span>Compare</span></div> -->
+
+            <!-- <div id="edit" class="option" style="position: absolute; bottom:20px;"><svg style="width:24px;height:24px;vertical-align:top;" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-            </svg>Edit</div>
+            </svg>Edit</div> -->
 
         </div>
         <div class="content" id="content">
-            <div class="title">
-                Sustainability
-            </div>
-            <div class="paragraph">Paragraph</div>
+            <div class="title">Widget Maker</div>
+            <div class="paragraph">Use the tool below to make a widget for your website</div>
+            
 
-            <table border="1">
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td>Google</td>
-                        <td>AWS</td>
-                        <td>Azure</td>
-                    </tr>
-                    <tr>
-                        <td>Emissions (tCO2e) <svg style="width:21px;height:21px;vertical-align:top;" viewBox="0 0 24 24" onclick="gid('emissions-tooltip').style.visibility = 'visible';">
-                            <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
-                        </svg><span class="tooltip" id="emissions-tooltip"><p class="tooltip-text">This is the unit for measuring emissions. It means that a certaing number of somehing or other is released into our flatmosphere</p></span></td>
-                        <td>20million</td>
-                        <td>billion</td>
-                        <td>Azure</td>
-                    </tr>
-                    <tr>
-                        <td>Operating Status</td>
-                        <td><a href="defs.html">Carbon Neutral</a></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="services" class="provider-services" style="display:block">
+
+
+                <div class="paragraph">Which of the following cloud services do you use?</div>
+
+                <label for="compute-box">Computing</label>
+                <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info');"><br>
+              
+                <div id="compute-info" style="display:none;">
+                    <label for="compute-provider">Select your computing provider:</label>
+                    <select id="compute-provider" onchange="fillRegionSelect(this.value,'compute-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="compute-region">Computing Region: </label>
+                    <select id="compute-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="vCPUHours">vCPUHours: </label>
+                    <input type="number" id="vCPUHours" value="1"><br>
+
+                    <label for="memory-gigabyteHours">Memory GigabyteHours: </label>
+                    <input type="number" id="memory-gigabyteHours" value="0">
+                </div>
+
+                <label for="storage-box">Storage</label>
+                <input type="checkbox" id="storage-box" onchange="toggleVisibility('storage-info')"><br>
+
+                <div id="storage-info" style="display:none;">
+                    <label for="storage-provider">Select your storage provider:</label>
+                    <select id="storage-provider" onchange="fillRegionSelect(this.value,'storage-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="storage-region">Storage Region: </label>
+                    <select id="storage-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="drive-type">Drive type: </label>
+                    <select id="drive-type">
+                        <option value="HDD">HDD</option>
+                        <option value="SSD">SSD</option>
+                    </select><br>
+
+                    <label for="storage-gigabyteHours">Storage GigabyteHours: </label>
+                    <input type="number" id="storage-gigabyteHours" value="0">
+                </div>
+
+                <label for="networking-box">Networking</label>
+                <input type="checkbox" id="networking-box" onchange="toggleVisibility('networking-info')"><br>
+                
+                <div id="networking-info" style="display:none;">
+                    <label for="networking-provider">Select your networking provider:</label>
+                    <select id="networking-provider" onchange="fillRegionSelect(this.value,'networking-region');">
+                        <option value='none'>--Select a provider--</option>
+                        <option value="aws">Amazon Web Services</option>
+                        <option value="gcp">Google Cloud</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select><br>
+                    <label for="networking-region">Networking Region: </label>
+                    <select id="networking-region">
+                        <option>Please select a provider</option>
+                    </select><br>
+                    <label for="networking-gigabytes">Networking Gigabytes: </label>
+                    <input type="number" id="networking-gigabytes" value="1"><br>
+                </div>
+
+
+                <button id="calc-button" onclick="showFootprint({'compute': [gid('vCPUHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'memory': [gid('memory-gigabyteHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'storage': [gid('storage-gigabyteHours').value, gid('drive-type').value, gid('storage-provider').value, gid('storage-region').value, gid('storage-box').checked], 'networking': [gid('networking-gigabytes').value, gid('networking-provider').value, gid('networking-region').value, gid('networking-box').checked]}, 'tonnes')" style="margin-top: 10px;">Calculate Emissions</button>
+            </div>
+            <div id="emissions" style="display: none;padding-top: 20px;"></div>
         </div>
     </body>
 </html>
