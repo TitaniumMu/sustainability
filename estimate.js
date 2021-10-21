@@ -386,28 +386,26 @@ const estimationConstants = {
         }
     }
 }
+
 console.log(rankRegions())
 function rankRegions() {
-    var regionEmissionsFactors = {};
+
+    var regionEmissionsFactors = [];
     var aws = estimationConstants.aws.regions;
     var azure = estimationConstants.azure.regions;
     var gcp = estimationConstants.gcp.regions;
 
     for(var i=0;i<Object.keys(aws).length;i++) {
-        regionEmissionsFactors['aws-'+Object.keys(aws)[i]] = aws[Object.keys(aws)[i]].emissionsFactor;
+        regionEmissionsFactors.push({"name": 'aws-'+Object.keys(aws)[i], "emissionsFactor": aws[Object.keys(aws)[i]].emissionsFactor})
     }
     for(var i=0;i<Object.keys(azure).length;i++) {
-        regionEmissionsFactors['azure-'+Object.keys(azure)[i]] = azure[Object.keys(azure)[i]].emissionsFactor;
+        regionEmissionsFactors.push({"name": 'azure-'+Object.keys(azure)[i], "emissionsFactor": azure[Object.keys(azure)[i]].emissionsFactor})
     }
     for(var i=0;i<Object.keys(gcp).length;i++) {
-        regionEmissionsFactors['gcp-'+Object.keys(gcp)[i]] = gcp[Object.keys(gcp)[i]].emissionsFactor;
+        regionEmissionsFactors.push({"name": 'gcp-'+Object.keys(gcp)[i], "emissionsFactor": gcp[Object.keys(gcp)[i]].emissionsFactor})
     }
 
-    var keys = Object.keys(regionEmissionsFactors);
-    for(var i=0;i<keys.length;i++) {
-        
-    }
-
+    regionEmissionsFactors.sort(function(a, b) {return(a.emissionsFactor - b.emissionsFactor)})
     return regionEmissionsFactors;
 }
 
