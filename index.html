@@ -38,6 +38,7 @@
         </div>
         <div class="content" id="content">
             <div class="title">Widget Maker</div>
+            <hr>
             <div class="paragraph">Use the tool below to make a widget for your website</div>
             
 
@@ -46,7 +47,7 @@
 
                 <div class="paragraph">Which of the following cloud services do you use?</div>
 
-                <label for="compute-box">Computing</label>
+                <label for="compute-box" class="box_label">Computing</label>
                 <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info');"><br>
               
                 <div id="compute-info" style="display:none;">
@@ -66,9 +67,10 @@
 
                     <label for="memory-gigabyteHours">Memory GigabyteHours: </label>
                     <input type="number" id="memory-gigabyteHours" value="0">
+                    <br><br>
                 </div>
 
-                <label for="storage-box">Storage</label>
+                <label for="storage-box" class="box_label">Storage</label>
                 <input type="checkbox" id="storage-box" onchange="toggleVisibility('storage-info')"><br>
 
                 <div id="storage-info" style="display:none;">
@@ -91,9 +93,10 @@
 
                     <label for="storage-gigabyteHours">Storage GigabyteHours: </label>
                     <input type="number" id="storage-gigabyteHours" value="0">
+                    <br><br>
                 </div>
 
-                <label for="networking-box">Networking</label>
+                <label for="networking-box" class="box_label">Networking</label>
                 <input type="checkbox" id="networking-box" onchange="toggleVisibility('networking-info')"><br>
                 
                 <div id="networking-info" style="display:none;">

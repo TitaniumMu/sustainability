@@ -41,7 +41,7 @@ body {
 
 .title {
     margin-top:10px;
-    font-size:28px;
+    font-size:45px;
     font-weight:bold;
 }
 
@@ -109,4 +109,8 @@ a {
 
 .provider-services {
     display: none;
+}
+
+.box_label {
+    font-weight: bold;
 }
