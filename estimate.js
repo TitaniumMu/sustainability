@@ -406,16 +406,57 @@ function rankRegions() {
     }
 
     regionEmissionsFactors.sort(function(a, b) {return(a.emissionsFactor - b.emissionsFactor)})
+
+    var str = "";
+    for(var i=0;i<regionEmissionsFactors.length;i++){
+        str += (regionEmissionsFactors[i]['emissionsFactor'] * 1000 + " ")
+    }
+    return str;
     return regionEmissionsFactors;
 }
 
 function calculate(data) { //Format data like so: {'compute': [vCPUHours, provider, region, consider?], 'memory': [gigabyetHours, provider, region, consider?]}
-    return(
-        (data.compute[3] ? estimateCO2(computeKWh(data.compute[0], data.compute[1], data.compute[2]), data.compute[1], data.compute[2]) : 0) +
-        (data.memory[3] ? estimateCO2(memoryKWh(data.memory[0], data.memory[1], data.memory[2]), data.memory[1], data.memory[2]) : 0) +
-        (data.storage[4] ? estimateCO2(storageKWh(data.storage[0], data.storage[1], data.storage[2], data.storage[3]), data.storage[2], data.storage[3]) : 0) +
-        (data.networking[3] ? estimateCO2(networkingKWh(data.networking[0], data.networking[1], data.networking[2]), data.networking[1], data.networking[2]) : 0)
-    )
+  
+    var computeKWh = 0;
+    var computeCO2 = 0;
+    if(data.compute[3]) {
+        var computeKWh = estimateComputeKWh(data.compute[0], data.compute[1], data.compute[2])
+        var computeCO2 = estimateCO2(computeKWh, data.compute[1], data.compute[2]);
+    }
+    
+    var memoryKWh = 0;
+    var memoryCO2 = 0;
+    if(data.compute[3]) {
+        var memoryKWh = estimateMemoryKWh(data.memory[0], data.memory[1], data.memory[2]);
+        var memoryCO2 = estimateCO2(memoryKWh, data.memory[1], data.memory[2]);
+    }
+
+    var storageKWh = 0;
+    var storageCO2 = 0;
+    if(data.storage[4]) {
+        var storageKWh = estimateStorageKWh(data.storage[0], data.storage[1], data.storage[2], data.storage[3]);
+        var storageCO2 = estimateCO2(storageKWh, data.storage[2], data.storage[3]);
+    }
+
+    var networkingKWh = 0;
+    var networkingCO2 = 0;
+    if(data.networking[3]) {
+        var networkingKWh = estimateNetworkingKWh(data.networking[0], data.networking[1], data.networking[2]);
+        var networkingCO2 = estimateCO2(networkingKWh, data.networking[1], data.networking[2]);
+    }
+
+
+    var totalKWh = computeKWh + memoryKWh + storageKWh + networkingKWh;
+
+    var totalCO2 = computeCO2 + memoryCO2 + storageCO2 + networkingCO2;
+
+    console.log("compute: " + Math.floor(10000*computeKWh/totalKWh)/100 + "% of total KWh" + ",   " + Math.floor(10000*computeCO2/totalCO2)/100 + "% of total CO2")
+    console.log("memory: " + Math.floor(10000*memoryKWh/totalKWh)/100 + "% of total KWh" + ",   " + Math.floor(10000*memoryCO2/totalCO2)/100 + "% of total CO2")
+    console.log("storage: " + Math.floor(10000*storageKWh/totalKWh)/100 + "% of total KWh" + ",   " + Math.floor(10000*storageCO2/totalCO2)/100 + "% of total CO2")
+    console.log("networking: " + Math.floor(10000*networkingKWh/totalKWh)/100 + "% of total KWh" + ",   " + Math.floor(10000*networkingCO2/totalCO2)/100 + "% of total CO2")
+
+
+    return(totalCO2); //returns metric tonnes
 }
 
 function estimateCO2(kilowattHours, provider, region) { //Emissions factor is metric tonnes per kWh
@@ -425,7 +466,7 @@ function estimateCO2(kilowattHours, provider, region) { //Emissions factor is me
     return (kilowattHours * emissionsFactor);
 }
 
-function computeKWh(vCPUHours, provider, region) {
+function estimateComputeKWh(vCPUHours, provider, region) {
     region = region || "unknown";
     var minWatts = estimationConstants[provider].minWatts;
     var maxWatts = estimationConstants[provider].maxWatts;
@@ -436,7 +477,7 @@ function computeKWh(vCPUHours, provider, region) {
     return ((minWatts + (CPU / 100) * (maxWatts - minWatts)) * vCPUHours * PUE * replicationFactor / 1000)
 }
 
-function memoryKWh(gigabyteHours, provider, region) {
+function estimateMemoryKWh(gigabyteHours, provider, region) {
     region = region || "unknown";
     var PUE = estimationConstants[provider].regions[region].powerUsageEffectiveness || estimationConstants[provider].regions.unknown.powerUsageEffectiveness;
     var replicationFactor = (isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
@@ -445,7 +486,7 @@ function memoryKWh(gigabyteHours, provider, region) {
     return(gigabyteHours * coefficient * PUE * replicationFactor)
 }
 
-function storageKWh(gigabyteHours, driveType, provider, region) {
+function estimateStorageKWh(gigabyteHours, driveType, provider, region) {
     region = region || "unknown";
     var terabyteHours = gigabyteHours / 1000;
     var PUE = estimationConstants[provider].regions[region].powerUsageEffectiveness || estimationConstants[provider].regions.unknown.powerUsageEffectiveness;
@@ -455,7 +496,7 @@ function storageKWh(gigabyteHours, driveType, provider, region) {
     return ((terabyteHours * coefficient * PUE * replicationFactor) / 1000);
 }
 
-function networkingKWh(gigabytes, provider, region) {
+function estimateNetworkingKWh(gigabytes, provider, region) {
     region = region || "unknown";
     var PUE = estimationConstants[provider].regions[region].powerUsageEffectiveness || estimationConstants[provider].regions.unknown.powerUsageEffectiveness;
     var coefficient = estimationConstants[provider].networkingCoefficient;

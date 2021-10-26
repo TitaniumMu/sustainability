@@ -42,6 +42,14 @@ function fillRegionSelect(provider, selectid) {
     }
 }
 
+function checkVisible(box, info) {
+    console.log(box.checked)
+}
+
+function fillRandomData() {
+    gid('compute-box')
+}
+
 function showFootprint(data) {
     var tonnesCO2 = calculate(data);
     var kgCO2 = tonnesCO2 * 1000
