@@ -3,18 +3,18 @@
 body {
     margin: 0px;
     font-family: Jost;
-  }
-
-.nav-bar.mini .option span {
-    display: none;
 }
 
 .nav-bar {
     width: 200px;
     height: 100%;
     background-color:#0f5024;
-    position: absolute;
+    position: fixed;
     user-select: none;
+}
+
+.nav-bar.mini .option span {
+    display: none;
 }
 
 .nav-bar.mini {
@@ -145,5 +145,4 @@ a {
 #calc-button:active {
     background-color: #c4c0c0;
     color: black;
-
 }
