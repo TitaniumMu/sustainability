@@ -1,6 +1,8 @@
+@font-face { font-family: Jost; src: url('font/Jost/Jost-VariableFont_wght.ttf') }
+
 body {
     margin: 0px;
-    font-family:sans-serif;
+    font-family: Jost;
   }
 
 .nav-bar.mini .option span {
@@ -83,7 +85,7 @@ td:first-child{
 .paragraph {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 25px;
+    font-size: 20px;
     width: 70%;
 }
 
@@ -113,7 +115,7 @@ a {
 
 .box_label {
     font-weight: bold;
-    font-size: 30px
+    font-size: 25px
 }
 
 #calc-button {
