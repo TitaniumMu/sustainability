@@ -387,7 +387,7 @@ const estimationConstants = {
     }
 }
 
-console.log(rankRegions())
+// console.log(rankRegions())
 function rankRegions() {
 
     var regionEmissionsFactors = [];

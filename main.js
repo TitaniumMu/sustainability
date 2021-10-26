@@ -2,7 +2,7 @@ function gid(id) {
     return document.getElementById(id);
 }
 
-function toggleVisibility(id) {
+function toggleVisibility(id) { //Probably obselete
     id = id.split(',');
     for(var i=0;i<id.length;i++) {
         if(gid(id[i]).style.display == 'block'){
@@ -42,12 +42,51 @@ function fillRegionSelect(provider, selectid) {
     }
 }
 
-function checkVisible(box, info) {
-    console.log(box.checked)
+function checkVisible(box, info) { //both inputs are already elements
+    if(box.checked) {
+        info.style.display = 'block';
+    } else {
+        info.style.display = 'none';
+    }
 }
 
 function fillRandomData() {
-    gid('compute-box')
+
+    function getRandProv() {
+        num = Math.random();
+        if(num < .33){return('aws')}
+        if(num < .66){return('azure')}
+        return('gcp')
+    }
+
+    function getRandRegion(provider) {
+        var regions = estimationConstants[provider].regions;
+        return(Object.keys(regions)[Math.floor(Math.random() * Object.keys(regions).length)]);
+    }
+
+    gid('compute-box').checked = (Math.random() < .9 ? true : false);
+    gid('compute-info').style.display = 'block'
+    gid('compute-provider').value = getRandProv();
+    fillRegionSelect(gid('compute-provider').value, 'compute-region')
+    gid('compute-region').value = getRandRegion(gid('compute-provider').value)
+    gid('vCPUHours').value = Math.random() * Math.random() * 100
+    gid('memory-gigabyteHours').value = Math.random() * Math.random() * 100
+
+    gid('storage-box').checked = (Math.random() < .9 ? true : false);
+    gid('storage-info').style.display = 'block'
+    gid('storage-provider').value = getRandProv();
+    fillRegionSelect(gid('storage-provider').value, 'storage-region')
+    gid('storage-region').value = getRandRegion(gid('storage-provider').value)
+    gid('drive-type').value = (Math.random()<.5 ? 'HDD' : 'SSD')
+    gid('storage-gigabyteHours').value = Math.random() * Math.random() * 100
+
+    gid('networking-box').checked = (Math.random() < .9 ? true : false);
+    gid('networking-info').style.display = 'block'
+    gid('networking-provider').value = getRandProv();
+    fillRegionSelect(gid('networking-provider').value, 'networking-region')
+    gid('networking-region').value = getRandRegion(gid('networking-provider').value)
+    gid('networking-gigabytes').value = Math.random() * Math.random() * 100
+
 }
 
 function showFootprint(data) {
