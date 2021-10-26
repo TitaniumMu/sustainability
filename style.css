@@ -115,7 +115,12 @@ a {
 
 .box_label {
     font-weight: bold;
-    font-size: 25px
+    font-size: 25px;
+    margin-left: 15px;
+}
+
+.info {
+    margin-left: 20px;
 }
 
 #calc-button {
@@ -123,6 +128,7 @@ a {
     border: 2px solid #0f5024;
     color: white;
     padding: 15px 25px;
+    margin-top: 20px;
     font-weight: bold;
     text-align: center;
     font-size: 18px;

@@ -37,7 +37,7 @@
 
         </div>
         <div class="content" id="content">
-            <div class="title">Widget Maker</div>
+            <div class="title">Carbon Calculator</div>
             <hr>
             <div class="paragraph">Use the tool below to make a widget for your website</div>
             
@@ -45,13 +45,12 @@
             <div id="services" class="provider-services" style="display:block">
 
 
-                <div class="paragraph">Which of the following cloud services do you use?</div>
-                <br>
+                <div class="paragraph" style="margin-bottom: 15px;">Which of the following cloud services do you use?</div>
 
                 <label for="compute-box" class="box_label">Computing</label>
                 <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info');"><br>
               
-                <div id="compute-info" style="display:none;">
+                <div class="info" id="compute-info" style="display:none;">
                     <label for="compute-provider">Select your computing provider:</label>
                     <select id="compute-provider" onchange="fillRegionSelect(this.value,'compute-region');">
                         <option value='none'>--Select a provider--</option>
@@ -74,7 +73,7 @@
                 <label for="storage-box" class="box_label">Storage</label>
                 <input type="checkbox" id="storage-box" onchange="toggleVisibility('storage-info')"><br>
 
-                <div id="storage-info" style="display:none;">
+                <div class="info" id="storage-info" style="display:none;">
                     <label for="storage-provider">Select your storage provider:</label>
                     <select id="storage-provider" onchange="fillRegionSelect(this.value,'storage-region');">
                         <option value='none'>--Select a provider--</option>
@@ -100,7 +99,7 @@
                 <label for="networking-box" class="box_label">Networking</label>
                 <input type="checkbox" id="networking-box" onchange="toggleVisibility('networking-info')"><br>
                 
-                <div id="networking-info" style="display:none;">
+                <div class="info" id="networking-info" style="display:none;">
                     <label for="networking-provider">Select your networking provider:</label>
                     <select id="networking-provider" onchange="fillRegionSelect(this.value,'networking-region');">
                         <option value='none'>--Select a provider--</option>
@@ -117,7 +116,7 @@
                 </div>
 
 
-                <button id="calc-button" onclick="showFootprint({'compute': [gid('vCPUHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'memory': [gid('memory-gigabyteHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'storage': [gid('storage-gigabyteHours').value, gid('drive-type').value, gid('storage-provider').value, gid('storage-region').value, gid('storage-box').checked], 'networking': [gid('networking-gigabytes').value, gid('networking-provider').value, gid('networking-region').value, gid('networking-box').checked]}, 'tonnes')" style="margin-top: 10px;">Calculate Emissions</button>
+                <button id="calc-button" onclick="showFootprint({'compute': [gid('vCPUHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'memory': [gid('memory-gigabyteHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'storage': [gid('storage-gigabyteHours').value, gid('drive-type').value, gid('storage-provider').value, gid('storage-region').value, gid('storage-box').checked], 'networking': [gid('networking-gigabytes').value, gid('networking-provider').value, gid('networking-region').value, gid('networking-box').checked]}, 'tonnes')">Calculate Emissions</button>
                 <br>
             </div>
             <div id="emissions" style="display:none; padding-top:20px; font-size:40px;"></div>
