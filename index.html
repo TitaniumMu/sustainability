@@ -46,6 +46,7 @@
 
 
                 <div class="paragraph">Which of the following cloud services do you use?</div>
+                <br>
 
                 <label for="compute-box" class="box_label">Computing</label>
                 <input type="checkbox" id="compute-box" onchange="toggleVisibility('compute-info');"><br>
@@ -117,8 +118,9 @@
 
 
                 <button id="calc-button" onclick="showFootprint({'compute': [gid('vCPUHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'memory': [gid('memory-gigabyteHours').value, gid('compute-provider').value, gid('compute-region').value, gid('compute-box').checked], 'storage': [gid('storage-gigabyteHours').value, gid('drive-type').value, gid('storage-provider').value, gid('storage-region').value, gid('storage-box').checked], 'networking': [gid('networking-gigabytes').value, gid('networking-provider').value, gid('networking-region').value, gid('networking-box').checked]}, 'tonnes')" style="margin-top: 10px;">Calculate Emissions</button>
+                <br>
             </div>
-            <div id="emissions" style="display: none;padding-top: 20px;"></div>
+            <div id="emissions" style="display:none; padding-top:20px; font-size:40px;"></div>
         </div>
     </body>
 </html>

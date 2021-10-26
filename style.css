@@ -41,7 +41,7 @@ body {
 
 .title {
     margin-top:10px;
-    font-size:45px;
+    font-size:75px;
     font-weight:bold;
 }
 
@@ -83,7 +83,7 @@ td:first-child{
 .paragraph {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 25px;
     width: 70%;
 }
 
@@ -113,4 +113,28 @@ a {
 
 .box_label {
     font-weight: bold;
+    font-size: 30px
+}
+
+#calc-button {
+    background-color: #0f5024;
+    border: 2px solid #0f5024;
+    color: white;
+    padding: 15px 25px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 13px;
+    transition-duration: 0.15s;
+}
+
+#calc-button:hover {
+    background-color: white;
+    color: black;
+}
+
+#calc-button:active {
+    background-color: #e0e0e0;
+    color: black;
+
 }
