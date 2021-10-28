@@ -13,15 +13,15 @@ function toggleVisibility(id) { //Probably obselete
     }
 }
 
-function toggleNavbar() {
-    if(gid('nav-bar').classList.contains('mini')) {
-        gid('nav-bar').classList.remove('mini');
-        gid('content').classList.remove('wide');
-    }else{
-        gid('nav-bar').classList.add('mini');
-        gid('content').classList.add('wide');
-    }
-}
+// function toggleNavbar() {
+//     if(gid('nav-bar').classList.contains('mini')) {
+//         gid('nav-bar').classList.remove('mini');
+//         gid('content').classList.remove('wide');
+//     }else{
+//         gid('nav-bar').classList.add('mini');
+//         gid('content').classList.add('wide');
+//     }
+// }
 
 function fillRegionSelect(provider, selectid) {
     selectid = gid(selectid);
