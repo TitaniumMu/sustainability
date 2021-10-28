@@ -95,4 +95,6 @@ function showFootprint(data) {
 
     gid('emissions').innerHTML = "Your calculated emissions are " + kgCO2 + "Kg CO2e";
     gid('emissions').style.display = "block"
+
+    window.scrollTo({top: document.documentElement.scrollHeight, behavior: "smooth"});
 }
