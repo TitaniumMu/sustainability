@@ -1,4 +1,7 @@
+/* https://fonts.google.com/specimen/Jost */
 @font-face { font-family: Jost; src: url('font/Jost/static/Jost-Regular.ttf') }
+@font-face { font-family: Jost; font-weight: bold; src: url('font/Jost/static/Jost-Bold.ttf') }
+@font-face { font-family: Jost; font-style: italic; src: url('font/Jost/static/Jost-Italic.ttf') }
 
 body {
     margin: 0px;
