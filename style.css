@@ -18,6 +18,10 @@ body {
     user-select: none;
 }
 
+table svg:hover ~ span, table svg ~ span:hover {
+    visibility: visible;
+}
+
 /* .nav-bar.mini .option span {
     display: none;
 }
