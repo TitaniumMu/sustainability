@@ -73,7 +73,7 @@ function fillRandomData() {
     gid('memory-gigabyteHours').value = Math.random() * Math.random() * 100
 
     gid('storage-box').checked = (Math.random() < .9 ? true : false);
-    gid('storage-info').style.display = (gid('compute-box').checked ? 'block' : 'none');
+    gid('storage-info').style.display = (gid('storage-box').checked ? 'block' : 'none');
     gid('storage-provider').value = getRandProv();
     fillRegionSelect(gid('storage-provider').value, 'storage-region')
     gid('storage-region').value = getRandRegion(gid('storage-provider').value)
@@ -81,7 +81,7 @@ function fillRandomData() {
     gid('storage-gigabyteHours').value = Math.random() * Math.random() * 100
 
     gid('networking-box').checked = (Math.random() < .9 ? true : false);
-    gid('networking-info').style.display = (gid('compute-box').checked ? 'block' : 'none');
+    gid('networking-info').style.display = (gid('networking-box').checked ? 'block' : 'none');
     gid('networking-provider').value = getRandProv();
     fillRegionSelect(gid('networking-provider').value, 'networking-region')
     gid('networking-region').value = getRandRegion(gid('networking-provider').value)
