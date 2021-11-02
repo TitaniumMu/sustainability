@@ -36,7 +36,6 @@ table svg:hover ~ span, table svg ~ span:hover {
 
 .nav-bar ul {
     margin: 0px;
-    /* padding: 0px; */
     list-style-type: none;
     overflow: hidden;
     background-color: #0f5024;
@@ -47,6 +46,7 @@ table svg:hover ~ span, table svg ~ span:hover {
     cursor: pointer;
     display: block;
     float: left;
+    padding: 2px;
 }
 
 .nav-bar li a {
