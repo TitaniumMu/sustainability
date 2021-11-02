@@ -408,9 +408,10 @@ function rankRegions() {
     regionEmissionsFactors.sort(function(a, b) {return(a.emissionsFactor - b.emissionsFactor)})
 
     var str = "";
-    for(var i=0;i<regionEmissionsFactors.length;i++){
+    for(var i=0;i<regionEmissionsFactors.length;i++)
+    
         str += (regionEmissionsFactors[i]['emissionsFactor'] * 1000 + " ")
-    }
+    
     return str;
     return regionEmissionsFactors;
 }
