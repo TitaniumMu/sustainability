@@ -36,17 +36,18 @@ table svg:hover ~ span, table svg ~ span:hover {
 
 .nav-bar ul {
     margin: 0px;
+    padding: 10px 20px;
     list-style-type: none;
     overflow: hidden;
     background-color: #0f5024;
+    /* height: 55px; */
 }
 
 .nav-bar li {
     width: fit-content;
-    cursor: pointer;
     display: block;
     float: left;
-    padding: 2px;
+    padding: 0px 2px;
 }
 
 .nav-bar li a {
@@ -54,6 +55,7 @@ table svg:hover ~ span, table svg ~ span:hover {
     font-size: 22px;
     padding: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 .nav-bar li a:hover:not(.active) {
