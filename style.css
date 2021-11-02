@@ -9,11 +9,11 @@ body {
 }
 
 .nav-bar {
-    width: 100%;
-    height: 55px;
-    background-color:#0f5024;
-    float: left;
-    float: right;
+    /* width: 100%; */
+    /* height: 55px; */
+    /* background-color:#0f5024; */
+    /* float: left; */
+    /* float: right; */
     position: static;
     user-select: none;
 }
@@ -34,27 +34,48 @@ table svg:hover ~ span, table svg ~ span:hover {
     display: none !important;
 } */
 
-.nav-bar .option {
-    font-size: 22px;
-    padding: 10px;
-    color:white;
+.nav-bar ul {
+    margin: 0px;
+    /* padding: 0px; */
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #0f5024;
+}
+
+.nav-bar li {
     width: fit-content;
     cursor: pointer;
     display: block;
     float: left;
 }
 
-.nav-bar .option.indented{
-    margin-left: 20px;
+.nav-bar li a {
+    color:white;
+    font-size: 22px;
+    padding: 10px;
+    text-align: center;
 }
 
+.nav-bar li a:hover:not(.active) {
+    background-color: #0c411c
+}
+
+.active {
+    background-color: #082c14
+}
+
+
+/* .nav-bar .option.indented{
+    margin-left: 20px;
+} */
+/* 
 .content.wide {
     padding-left:10%;
     padding-right:10%;
     left:200px;
     position: absolute;
     width: calc(100% - 20% - 200px);
-}
+} */
 
 .content {
     padding-left:10%;
