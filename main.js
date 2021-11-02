@@ -45,6 +45,7 @@ function fillRegionSelect(provider, selectid) {
 function checkVisible(box, info) { //both inputs are already elements
     if(box.checked) {
         info.style.display = 'block';
+        scrollBottom()
     } else {
         info.style.display = 'none';
     }
@@ -95,6 +96,8 @@ function showFootprint(data) {
 
     gid('emissions').innerHTML = "Your calculated emissions are " + kgCO2 + "Kg CO2e";
     gid('emissions').style.display = "block"
+}
 
+function scrollBottom() {
     window.scrollTo({top: document.documentElement.scrollHeight, behavior: "smooth"});
 }
