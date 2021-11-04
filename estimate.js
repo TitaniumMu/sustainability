@@ -395,25 +395,26 @@ function rankRegions() {
     var azure = estimationConstants.azure.regions;
     var gcp = estimationConstants.gcp.regions;
 
-    /*for(var i=0;i<Object.keys(aws).length;i++) {
+    for(var i=0;i<Object.keys(aws).length;i++) {
         regionEmissionsFactors.push({"name": 'aws-'+Object.keys(aws)[i], "emissionsFactor": aws[Object.keys(aws)[i]].emissionsFactor})
     }
     for(var i=0;i<Object.keys(azure).length;i++) {
         regionEmissionsFactors.push({"name": 'azure-'+Object.keys(azure)[i], "emissionsFactor": azure[Object.keys(azure)[i]].emissionsFactor})
-    }*/
+    }
     for(var i=0;i<Object.keys(gcp).length;i++) {
         regionEmissionsFactors.push({"name": 'gcp-'+Object.keys(gcp)[i], "emissionsFactor": gcp[Object.keys(gcp)[i]].emissionsFactor})
     }
 
     regionEmissionsFactors.sort(function(a, b) {return(a.emissionsFactor - b.emissionsFactor)})
-    console.log(Object.keys(regionEmissionsFactors).length)
-    console.log(regionEmissionsFactors[Object.keys(regionEmissionsFactors)[0]].name + ": " + regionEmissionsFactors[Object.keys(regionEmissionsFactors)[0]].emissionsFactor)
-    console.log(regionEmissionsFactors[Object.keys(regionEmissionsFactors)[33]].name + ": " + regionEmissionsFactors[Object.keys(regionEmissionsFactors)[33]].emissionsFactor)
-
+    // console.log(regionEmissionsFactors[Object.keys(regionEmissionsFactors)[0]].name + ": " + regionEmissionsFactors[Object.keys(regionEmissionsFactors)[0]].emissionsFactor)
+    // console.log(regionEmissionsFactors[Object.keys(regionEmissionsFactors)[33]].name + ": " + regionEmissionsFactors[Object.keys(regionEmissionsFactors)[33]].emissionsFactor)
+// console.log(regionEmissionsFactors)
     var str = "";
-    for(var i=0;i<regionEmissionsFactors.length;i++){
+    for(var i=0; i<regionEmissionsFactors.length; i++){
         str += (regionEmissionsFactors[i]['emissionsFactor'] * 1000 + " ")
     }
+
+    
     return str;
     return regionEmissionsFactors;
 }
