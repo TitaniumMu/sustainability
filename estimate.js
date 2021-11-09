@@ -414,13 +414,12 @@ function rankRegions() {
         str += (regionEmissionsFactors[i]['emissionsFactor'] * 1000 + " ")
     }
 
-    
     return str;
     return regionEmissionsFactors;
 }
 
 function calculate(data) { //Format data like so: {'compute': [vCPUHours, provider, region, consider?], 'memory': [gigabyetHours, provider, region, consider?]}
-  
+
     var computeKWh = 0;
     var computeCO2 = 0;
     if(data.compute[3]) {
