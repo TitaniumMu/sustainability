@@ -130,6 +130,18 @@ a {
     margin-left: 20px;
 }
 
+a:link {
+    font-size: 22px;
+}
+
+a:visited {
+    color:#082c14;
+}
+a:hover {
+    color:#0f5024;
+    text-decoration: underline;
+}
+
 #calc-button {
     background-color: #0f5024;
     border: 2px solid #0f5024;
