@@ -387,6 +387,12 @@ const estimationConstants = {
     }
 }
 
+function Trivory(){
+    var kwh = estimateComputeKWh(8766, 'aws', 'us-east-1');
+    var co2 = estimateCO2(kwh, 'aws', 'us-east-1')
+    return(co2 + 'metric tonnes, ' + co2*1000 + 'kg');
+}
+
 // console.log(rankRegions())
 function rankRegions() {
 
@@ -475,7 +481,7 @@ function estimateComputeKWh(vCPUHours, provider, region) {
     var maxWatts = estimationConstants[provider].maxWatts;
     var CPU = estimationConstants[provider].CpuUtilization;
     var PUE = (estimationConstants[provider].regions[region].powerUsageEffectiveness ? estimationConstants[provider].regions[region].powerUsageEffectiveness : estimationConstants[provider].regions.unknown.powerUsageEffectiveness);
-    replicationFactor = (isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
+    replicationFactor = 1//(isNaN(estimationConstants[provider].replicationFactor) ? 1 : estimationConstants[provider].replicationFactor);
 
     return ((minWatts + (CPU / 100) * (maxWatts - minWatts)) * vCPUHours * PUE * replicationFactor / 1000)
 }
